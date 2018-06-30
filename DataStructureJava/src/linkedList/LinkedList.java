@@ -31,14 +31,40 @@ public class LinkedList {
 		list.Push(2);
 		int length = list.LengthRecursive(list.head);
 		System.out.println(length);
+		System.out.println(list.Search(5));
+		
+		System.out.println(list.SearchRecursive(list.head, 5));
 		list.PrintList();
+	}
+
+	public boolean SearchRecursive(Node head, int key) {
+		if (head == null) {
+			return false;
+		}
+		if (head.data == key) {
+			return true;
+		} else {
+			return SearchRecursive(head.next, key);
+		}
+	}
+
+	public boolean Search(int key) {
+		Node temp = head;
+		while (temp != null) {
+			if (temp.data == key) {
+				return true;
+			}
+			temp = temp.next;
+		}
+
+		return false;
 	}
 
 	public int LengthRecursive(Node _head) {
 		if (_head == null) {
 			return 0;
 		}
-		return LengthRecursive(_head.next)+1;
+		return LengthRecursive(_head.next) + 1;
 	}
 
 	public int Length() {
