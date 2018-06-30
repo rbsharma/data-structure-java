@@ -27,7 +27,30 @@ public class LinkedList {
 		list.DeleteNode(4);
 		list.DeleteNodeAt(0);
 		list.Delete();
+		list.Push(1);
+		list.Push(2);
+		int length = list.LengthRecursive(list.head);
+		System.out.println(length);
 		list.PrintList();
+	}
+
+	public int LengthRecursive(Node _head) {
+		if (_head == null) {
+			return 0;
+		}
+		return LengthRecursive(_head.next)+1;
+	}
+
+	public int Length() {
+		int length = 0;
+
+		Node currentNode = head;
+		while (currentNode != null) {
+			currentNode = currentNode.next;
+			length++;
+		}
+
+		return length;
 	}
 
 	public void Delete() {
